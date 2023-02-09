@@ -56,8 +56,9 @@ namespace productAPI
 
             var serviceScope = app.ApplicationServices.CreateScope();
             var context = serviceScope.ServiceProvider.GetService<DatabaseContext>();
-
-            AddTestData(context);
+            
+            // uncomment below to seed data
+            // AddTestData(context);
 
             app.UseHttpsRedirection();
 

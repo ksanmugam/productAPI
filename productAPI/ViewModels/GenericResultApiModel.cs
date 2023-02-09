@@ -9,6 +9,5 @@ namespace productAPI.ViewModels
     {
         public bool Success { get; set; }
         public string Error { get; set; }
-        public Guid? Id { get; set; }
     }
 }

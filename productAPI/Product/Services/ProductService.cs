@@ -12,13 +12,16 @@ namespace productAPI.Product.Services
 {
     public class ProductService
     {
+        #region Constructor
         private readonly DatabaseContext _dbContext;
 
         public ProductService(DatabaseContext dbContext)
         {
             _dbContext = dbContext;
         }
+        #endregion
 
+        #region GET
         internal Task<List<ProductModel>> GetProducts(List<Guid> ids = null)
         {
             var result = GetProductFilters(ids: ids).ToListAsync();
@@ -37,7 +40,9 @@ namespace productAPI.Product.Services
 
             return filtered;
         }
+        #endregion
 
+        #region POST
         internal async Task<GenericResultApiModel> SaveProductsAsync(List<ProductApiModel> products)
         {
             GenericResultApiModel result = new GenericResultApiModel();
@@ -64,5 +69,6 @@ namespace productAPI.Product.Services
             }
             return result;
         }
+        #endregion
     }
 }

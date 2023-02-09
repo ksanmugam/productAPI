@@ -27,13 +27,18 @@ namespace productAPI.Product.Controllers
         }
         #endregion
 
-        // GET api/<ProductController>/5
+        #region GET a product / list of products
+        /// <summary>
+        /// To get a product / list of products
+        /// </summary>
+        /// <param name="ids">(Optional) Filter products by ids</param>
+        /// <returns></returns>
         [HttpGet]
         [ProducesResponseType(typeof(ProductApiModel), 200)]
         [ProducesResponseType(typeof(string), 400)]
         [ProducesResponseType(401)]
         [ProducesResponseType(typeof(string), 500)]
-        public async Task<IActionResult> GetProducts(string ids = null)
+        public async Task<IActionResult> GetProducts(string ids)
         {
             try
             {
@@ -50,8 +55,14 @@ namespace productAPI.Product.Controllers
                 throw new Exception("Failed to retrieve product(s)", e);
             }
         }
+        #endregion
 
-        // POST api/<ProductController>
+        #region POST a product / list of products
+        /// <summary>
+        /// To add a product / list of products
+        /// </summary>
+        /// <param name="products">Product model to be saved</param>
+        /// <returns></returns>
         [HttpPost]
         [ProducesResponseType(typeof(GenericResultApiModel), 200)]
         [ProducesResponseType(typeof(string), 400)]
@@ -68,17 +79,24 @@ namespace productAPI.Product.Controllers
                 throw new Exception("Failed to add product(s)", e);
             }
         }
+        #endregion
 
+        #region NOT IN USE
+        #region PUT
         // PUT api/<ProductController>/5
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] string value)
         {
         }
+        #endregion
 
+        #region DELETE
         // DELETE api/<ProductController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
         }
+        #endregion
+        #endregion
     }
 }
